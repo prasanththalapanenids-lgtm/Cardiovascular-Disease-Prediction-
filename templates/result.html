@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center">
+    <h2>Prediction Result</h2>
+    <h3 class="mt-3">{{ result }}</h3>
+    <p>Probability of disease: {{ probability }}%</p>
+    <a href="/predict" class="btn btn-primary mt-3">Make Another Prediction</a>
+</div>
+{% endblock %}

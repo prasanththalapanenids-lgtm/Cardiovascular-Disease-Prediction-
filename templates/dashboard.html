@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4">Data Visualization Dashboard</h2>
+
+<h4>Age Distribution</h4>
+{{ charts['age'] | safe }}
+
+<h4>Gender vs Cardiovascular Disease</h4>
+{{ charts['gender'] | safe }}
+
+<h4>Cholesterol Levels vs Cardiovascular Disease</h4>
+{{ charts['cholesterol'] | safe }}
+
+<h4>Glucose Levels vs Cardiovascular Disease</h4>
+{{ charts['gluc'] | safe }}
+
+<h4>Blood Pressure Scatter Plot</h4>
+{{ charts['bp'] | safe }}
+
+<h4>BMI Distribution</h4>
+{{ charts['bmi'] | safe }}
+
+<h4>Correlation Heatmap</h4>
+{{ charts['corr'] | safe }}
+
+{% endblock %}

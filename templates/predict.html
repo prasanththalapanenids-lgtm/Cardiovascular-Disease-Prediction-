@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4">Input Your Health Details</h2>
+<form method="POST">
+  <div class="row">
+    <div class="col-md-3 mb-3">
+      <label>Age (years)</label>
+      <input type="number" name="age" class="form-control" required>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label>Gender</label>
+      <select name="gender" class="form-control">
+        <option value="1">Male</option>
+        <option value="0">Female</option>
+      </select>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label>Height (cm)</label>
+      <input type="number" name="height" class="form-control" required>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label>Weight (kg)</label>
+      <input type="number" name="weight" class="form-control" required>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 mb-3">
+      <label>Systolic BP (ap_hi)</label>
+      <input type="number" name="ap_hi" class="form-control" required>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label>Diastolic BP (ap_lo)</label>
+      <input type="number" name="ap_lo" class="form-control" required>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label>Cholesterol</label>
+      <select name="cholesterol" class="form-control">
+        <option value="1">Normal</option>
+        <option value="2">Above Normal</option>
+        <option value="3">Well Above Normal</option>
+      </select>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label>Glucose</label>
+      <select name="gluc" class="form-control">
+        <option value="1">Normal</option>
+        <option value="2">Above Normal</option>
+        <option value="3">Well Above Normal</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 mb-3">
+      <label>Smoke</label>
+      <select name="smoke" class="form-control">
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label>Alcohol</label>
+      <select name="alco" class="form-control">
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label>Physical Activity</label>
+      <select name="active" class="form-control">
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-success mt-3">Predict</button>
+</form>
+{% endblock %}
