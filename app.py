@@ -78,30 +78,34 @@ def home():
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
     if request.method == 'POST':
-        # Get user inputs
-        age = int(request.form['age'])
-        gender = int(request.form['gender'])
-        height = float(request.form['height'])
-        weight = float(request.form['weight'])
-        ap_hi = int(request.form['ap_hi'])
-        ap_lo = int(request.form['ap_lo'])
-        cholesterol = int(request.form['cholesterol'])
-        gluc = int(request.form['gluc'])
-        smoke = int(request.form['smoke'])
-        alco = int(request.form['alco'])
-        active = int(request.form['active'])
+        try:
+            # Get user inputs
+            age = int(request.form['age'])
+            gender = int(request.form['gender'])
+            height = float(request.form['height'])
+            weight = float(request.form['weight'])
+            ap_hi = int(request.form['ap_hi'])
+            ap_lo = int(request.form['ap_lo'])
+            cholesterol = int(request.form['cholesterol'])
+            gluc = int(request.form['gluc'])
+            smoke = int(request.form['smoke'])
+            alco = int(request.form['alco'])
+            active = int(request.form['active'])
 
-        age_days = age * 365
-        features = np.array([[age_days, gender, height, weight, ap_hi, ap_lo,
-                              cholesterol, gluc, smoke, alco, active]])
-        features_scaled = scaler.transform(features)
+            age_days = age * 365
+            features = np.array([[age_days, gender, height, weight, ap_hi, ap_lo,
+                                  cholesterol, gluc, smoke, alco, active]])
+            features_scaled = scaler.transform(features)
 
-        prediction = model.predict(features_scaled)[0]
-        prob = model.predict_proba(features_scaled)[0][1]
+            prediction = model.predict(features_scaled)[0]
+            prob = model.predict_proba(features_scaled)[0][1]
 
-        result = 'Cardiovascular Disease Detected' if prediction == 1 else 'No Cardiovascular Disease'
+            result = 'Cardiovascular Disease Detected' if prediction == 1 else 'No Cardiovascular Disease'
 
-        return render_template('result.html', result=result, probability=round(prob*100, 2))
+            return render_template('result.html', result=result, probability=round(prob*100, 2))
+        
+        except Exception as e:
+            return f"Error: {e}"
 
     return render_template('predict.html')
 
